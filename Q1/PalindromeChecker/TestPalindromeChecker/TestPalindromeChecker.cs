@@ -15,5 +15,19 @@ namespace TestPalindromeChecker
 			var result = PalindromeChecker.isPalindrome("deleveled");
 			Assert.True(result);
 		}
+
+		[Fact]
+		public void isPalindromeMustReturnTrueWhenReceivesAPairPalindromeWord()
+		{
+			var result = PalindromeChecker.isPalindrome("deleeled");
+			Assert.True(result);
+		}
+
+		[Fact]
+		public void isPalindromeMustReturnTrueWhenReceivesAPalindromeWithCharacterCase()
+		{
+			var result = PalindromeChecker.isPalindrome("Deleveled");
+			Assert.True(result);
+		}
 	}
 }

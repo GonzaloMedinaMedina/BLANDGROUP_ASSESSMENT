@@ -1,12 +1,16 @@
-﻿public class PalindromeChecker
+﻿using System.Text.RegularExpressions;
+
+public class PalindromeChecker
 {
 	public static bool isPalindrome(string input)
 	{
-		int backwardIndex = input.Length - 1;
+		string sanitizedInput = Regex.Replace(input, "[A-Z]", upperChar => upperChar.Value.ToLower());
 
-		for (int forwardIndex = 0; forwardIndex < input.Length; forwardIndex++)
+		int backwardIndex = sanitizedInput.Length - 1;
+
+		for (int forwardIndex = 0; forwardIndex < sanitizedInput.Length; forwardIndex++)
 		{
-			if (input[forwardIndex] != input[backwardIndex])
+			if (sanitizedInput[forwardIndex] != sanitizedInput[backwardIndex])
 			{
 				return false;
 			}
