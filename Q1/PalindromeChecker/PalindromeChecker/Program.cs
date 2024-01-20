@@ -10,7 +10,7 @@ public class PalindromeChecker
 	private static string sanitizePalindrome(string input)
 	{
 		var sanitiziedInput = Regex.Replace(input, "[A-Z]", upperChar => upperChar.Value.ToLower());
-		sanitiziedInput = Regex.Replace(sanitiziedInput, " ", "");
+		sanitiziedInput = Regex.Replace(sanitiziedInput, "[&* {},=\\-_().;:'\"/|@#~€$!¡?¿%<>\\\\]", "");
 
 		return sanitiziedInput;
 	}

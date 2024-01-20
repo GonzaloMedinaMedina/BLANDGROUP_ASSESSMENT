@@ -36,5 +36,12 @@ namespace TestPalindromeChecker
 			var result = PalindromeChecker.isPalindrome("D    elev eled");
 			Assert.True(result);
 		}
+
+		[Fact]
+		public void isPalindromeMustReturnTrueWhenReceivesAPalindromeWithSpecialCharacters()
+		{
+			var result = PalindromeChecker.isPalindrome("deleve&* {},=-_().;:'\"/\\|@#~€$!¡?¿%<>led\\");
+			Assert.True(result);
+		}
 	}
 }
