@@ -73,16 +73,54 @@ namespace TestPalindromeChecker
 		}
 
 		[Fact]
-		public void isPalindromeMustReturnTrueWhenReceivesAPalindromeFloatNumber()
+		public void isPalindromeMustReturnTrueWhenReceivesAPalindromeDoubleNumber()
 		{
 			var result = PalindromeChecker.isPalindrome(10.01);
 			Assert.True(result);
 		}
 
 		[Fact]
-		public void isPalindromeMustReturnTrueWhenReceivesANonPalindromeFloatNumber()
+		public void isPalindromeMustReturnTrueWhenReceivesANonPalindromeDoubleNumber()
 		{
 			var result = PalindromeChecker.isPalindrome(10.11);
+			Assert.False(result);
+		}
+
+
+		[Fact]
+		public void isPalindromeMustReturnTrueWhenReceivesAPalindromeFloatNumberWithSuffix()
+		{
+			var result = PalindromeChecker.isPalindrome(10.01f);
+			Assert.True(result);
+			
+			result = PalindromeChecker.isPalindrome(10.01F);
+			Assert.True(result);
+		}
+
+		[Fact]
+		public void isPalindromeMustReturnTrueWhenReceivesAPalindromeDoubleNumberWithSuffix()
+		{
+			var result = PalindromeChecker.isPalindrome(10.01d);
+			Assert.True(result);
+
+			result = PalindromeChecker.isPalindrome(10.01D);
+			Assert.True(result);
+		}
+
+		[Fact]
+		public void isPalindromeMustReturnTrueWhenReceivesAPalindromeDecimalNumberWithSuffix()
+		{
+			var result = PalindromeChecker.isPalindrome(10.01m);
+			Assert.True(result);
+
+			result = PalindromeChecker.isPalindrome(10.01M);
+			Assert.True(result);
+		}
+
+		[Fact]
+		public void isPalindromeMustReturnFalseWhenReceivesANullValue()
+		{
+			var result = PalindromeChecker.isPalindrome(null);
 			Assert.False(result);
 		}
 	}
