@@ -29,5 +29,12 @@ namespace TestPalindromeChecker
 			var result = PalindromeChecker.isPalindrome("Deleveled");
 			Assert.True(result);
 		}
+
+		[Fact]
+		public void isPalindromeMustReturnTrueWhenReceivesAPalindromeWithWhiteSpaces()
+		{
+			var result = PalindromeChecker.isPalindrome("D    elev eled");
+			Assert.True(result);
+		}
 	}
 }
