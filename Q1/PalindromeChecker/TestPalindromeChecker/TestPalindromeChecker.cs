@@ -1,126 +1,187 @@
+using Moq;
+
 namespace TestPalindromeChecker
 {
 	public class TestPalindromeChecker
 	{
+		private PalindromeChecker? _palindromeChecker;
+		public PalindromeChecker palindromeChecker
+		{
+			get 
+			{
+				if (_palindromeChecker == null)
+				{
+					_palindromeChecker = new PalindromeChecker ();
+				}
+
+				return _palindromeChecker;
+			}
+			set { _palindromeChecker = value; }
+		}
+
+
 		[Fact]
 		public void isPalindromeMustReturnFalseWhenReceivesNonPalindromeWord()
 		{
-			var result = PalindromeChecker.isPalindrome("nonPalindrome");
+			var result = palindromeChecker.isPalindrome("nonPalindrome");
 			Assert.False(result);
 		}
 
 		[Fact]
 		public void isPalindromeMustReturnTrueWhenReceivesAPalindromeWord()
 		{
-			var result = PalindromeChecker.isPalindrome("deleveled");
+			var result = palindromeChecker.isPalindrome("deleveled");
 			Assert.True(result);
 		}
 
 		[Fact]
 		public void isPalindromeMustReturnTrueWhenReceivesAPairPalindromeWord()
 		{
-			var result = PalindromeChecker.isPalindrome("deleeled");
+			var result = palindromeChecker.isPalindrome("deleeled");
 			Assert.True(result);
 		}
 
 		[Fact]
 		public void isPalindromeMustReturnTrueWhenReceivesAPalindromeWithCharacterCase()
 		{
-			var result = PalindromeChecker.isPalindrome("Deleveled");
+			var result = palindromeChecker.isPalindrome("Deleveled");
 			Assert.True(result);
 		}
 
 		[Fact]
 		public void isPalindromeMustReturnTrueWhenReceivesAPalindromeWithWhiteSpaces()
 		{
-			var result = PalindromeChecker.isPalindrome("D    elev eled");
+			var result = palindromeChecker.isPalindrome("D    elev eled");
 			Assert.True(result);
 		}
 
 		[Fact]
 		public void isPalindromeMustReturnTrueWhenReceivesAPalindromeWithSpecialCharacters()
 		{
-			var result = PalindromeChecker.isPalindrome("deleve&* {},=-_().;:'\"/\\|@#~€$!¡?¿%<>led\\");
+			var result = palindromeChecker.isPalindrome("deleve&* {},=-_().;:'\"/\\|@#~€$!¡?¿%<>led\\");
 			Assert.True(result);
 		}
 
 		[Fact]
 		public void isPalindomeMustReturnTrueWhenReceivesAPalindromeOfNumbersInAString()
 		{
-			var result = PalindromeChecker.isPalindrome("1234321");
+			var result = palindromeChecker.isPalindrome("1234321");
 			Assert.True(result);
 		}
 
 		[Fact]
 		public void isPalindomeMustReturnTrueWhenReceivesAPalindromeOfNumbers()
 		{
-			var result = PalindromeChecker.isPalindrome(1234321);
+			var palindromeCheckerMock = new Mock<PalindromeChecker>();
+			palindromeCheckerMock.CallBase = true;
+			palindromeChecker = palindromeCheckerMock.Object;
+
+			var result = palindromeChecker.isPalindrome(1234321);
 			Assert.True(result);
+			palindromeCheckerMock.Verify(x => x.checkPalindrome(It.IsAny<string>(), It.Is<bool>(y => y == false)));
 		}
 
 		[Fact]
 		public void isPalindomeMustReturnFalseWhenReceivesAPNonalindromeOfNumbersInAString()
 		{
-			var result = PalindromeChecker.isPalindrome("91234321");
+			var palindromeCheckerMock = new Mock<PalindromeChecker>();
+			palindromeCheckerMock.CallBase = true;
+			palindromeChecker = palindromeCheckerMock.Object;
+
+			var result = palindromeChecker.isPalindrome("91234321");
 			Assert.False(result);
+			palindromeCheckerMock.Verify(x => x.checkPalindrome(It.IsAny<string>(), It.Is<bool>(y => y == true)));
 		}
 
 		[Fact]
 		public void isPalindomeMustReturnFalseWhenReceivesANonPalindromeOfNumbers()
 		{
-			var result = PalindromeChecker.isPalindrome(91234321);
+			var palindromeCheckerMock = new Mock<PalindromeChecker>();
+			palindromeCheckerMock.CallBase = true;
+			palindromeChecker = palindromeCheckerMock.Object;
+
+			var result = palindromeChecker.isPalindrome(91234321);
 			Assert.False(result);
+			palindromeCheckerMock.Verify(x => x.checkPalindrome(It.IsAny<string>(), It.Is<bool>(y => y == false)));
 		}
 
 		[Fact]
 		public void isPalindromeMustReturnTrueWhenReceivesAPalindromeDoubleNumber()
 		{
-			var result = PalindromeChecker.isPalindrome(10.01);
+			var palindromeCheckerMock = new Mock<PalindromeChecker>();
+			palindromeCheckerMock.CallBase = true;
+			palindromeChecker = palindromeCheckerMock.Object;
+
+			var result = palindromeChecker.isPalindrome(10.01);
 			Assert.True(result);
+			palindromeCheckerMock.Verify(x => x.checkPalindrome(It.IsAny<string>(), It.Is<bool>(y => y == false)), Times.Once);
 		}
 
 		[Fact]
 		public void isPalindromeMustReturnTrueWhenReceivesANonPalindromeDoubleNumber()
 		{
-			var result = PalindromeChecker.isPalindrome(10.11);
+			var palindromeCheckerMock = new Mock<PalindromeChecker>();
+			palindromeCheckerMock.CallBase = true;
+			palindromeChecker = palindromeCheckerMock.Object;
+
+			var result = palindromeChecker.isPalindrome(10.11);
 			Assert.False(result);
+			palindromeCheckerMock.Verify(x => x.checkPalindrome(It.IsAny<string>(), It.Is<bool>(y => y == false)));
 		}
 
 
 		[Fact]
 		public void isPalindromeMustReturnTrueWhenReceivesAPalindromeFloatNumberWithSuffix()
 		{
-			var result = PalindromeChecker.isPalindrome(10.01f);
+			var palindromeCheckerMock = new Mock<PalindromeChecker>();
+			palindromeCheckerMock.CallBase = true;
+			palindromeChecker = palindromeCheckerMock.Object;
+
+			var result = palindromeChecker.isPalindrome(10.01f);
 			Assert.True(result);
 			
-			result = PalindromeChecker.isPalindrome(10.01F);
+			result = palindromeChecker.isPalindrome(10.01F);
 			Assert.True(result);
+
+			palindromeCheckerMock.Verify(x => x.checkPalindrome(It.IsAny<string>(), It.Is<bool>(y => y == false)), Times.Exactly(2));
 		}
 
 		[Fact]
 		public void isPalindromeMustReturnTrueWhenReceivesAPalindromeDoubleNumberWithSuffix()
 		{
-			var result = PalindromeChecker.isPalindrome(10.01d);
+			var palindromeCheckerMock = new Mock<PalindromeChecker>();
+			palindromeCheckerMock.CallBase = true;
+			palindromeChecker = palindromeCheckerMock.Object;
+
+			var result = palindromeChecker.isPalindrome(10.01d);
 			Assert.True(result);
 
-			result = PalindromeChecker.isPalindrome(10.01D);
+			result = palindromeChecker.isPalindrome(10.01D);
 			Assert.True(result);
+
+			palindromeCheckerMock.Verify(x => x.checkPalindrome(It.IsAny<string>(), It.Is<bool>(y => y == false)), Times.Exactly(2));
 		}
 
 		[Fact]
 		public void isPalindromeMustReturnTrueWhenReceivesAPalindromeDecimalNumberWithSuffix()
 		{
-			var result = PalindromeChecker.isPalindrome(10.01m);
+			var palindromeCheckerMock = new Mock<PalindromeChecker>();
+			palindromeCheckerMock.CallBase = true;
+			palindromeChecker = palindromeCheckerMock.Object;
+
+			var result = palindromeChecker.isPalindrome(10.01m);
 			Assert.True(result);
 
-			result = PalindromeChecker.isPalindrome(10.01M);
+			result = palindromeChecker.isPalindrome(10.01M);
 			Assert.True(result);
+
+			palindromeCheckerMock.Verify(x => x.checkPalindrome(It.IsAny<string>(), It.Is<bool>(y => y == false)), Times.Exactly(2));
 		}
 
 		[Fact]
 		public void isPalindromeMustReturnFalseWhenReceivesANullValue()
 		{
-			var result = PalindromeChecker.isPalindrome(null);
+			var result = palindromeChecker.isPalindrome(null);
 			Assert.False(result);
 		}
 	}
