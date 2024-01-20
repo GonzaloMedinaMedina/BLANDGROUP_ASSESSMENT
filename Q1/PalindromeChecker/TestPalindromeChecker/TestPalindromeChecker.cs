@@ -43,5 +43,47 @@ namespace TestPalindromeChecker
 			var result = PalindromeChecker.isPalindrome("deleve&* {},=-_().;:'\"/\\|@#~€$!¡?¿%<>led\\");
 			Assert.True(result);
 		}
+
+		[Fact]
+		public void isPalindomeMustReturnTrueWhenReceivesAPalindromeOfNumbersInAString()
+		{
+			var result = PalindromeChecker.isPalindrome("1234321");
+			Assert.True(result);
+		}
+
+		[Fact]
+		public void isPalindomeMustReturnTrueWhenReceivesAPalindromeOfNumbers()
+		{
+			var result = PalindromeChecker.isPalindrome(1234321);
+			Assert.True(result);
+		}
+
+		[Fact]
+		public void isPalindomeMustReturnFalseWhenReceivesAPNonalindromeOfNumbersInAString()
+		{
+			var result = PalindromeChecker.isPalindrome("91234321");
+			Assert.False(result);
+		}
+
+		[Fact]
+		public void isPalindomeMustReturnFalseWhenReceivesANonPalindromeOfNumbers()
+		{
+			var result = PalindromeChecker.isPalindrome(91234321);
+			Assert.False(result);
+		}
+
+		[Fact]
+		public void isPalindromeMustReturnTrueWhenReceivesAPalindromeFloatNumber()
+		{
+			var result = PalindromeChecker.isPalindrome(10.01);
+			Assert.True(result);
+		}
+
+		[Fact]
+		public void isPalindromeMustReturnTrueWhenReceivesANonPalindromeFloatNumber()
+		{
+			var result = PalindromeChecker.isPalindrome(10.11);
+			Assert.False(result);
+		}
 	}
 }
