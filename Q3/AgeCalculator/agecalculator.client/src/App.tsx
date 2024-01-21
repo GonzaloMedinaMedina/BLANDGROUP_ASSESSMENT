@@ -2,8 +2,18 @@ import { useState } from 'react';
 import './App.css';
 import DateSelector from './Components/DateSelector';
 
+interface Age
+{
+    years: number;
+    months: number;
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+}
+
 function App() {
-    const [age, setAge] = useState(undefined);
+    const [age, setAge] = useState<Age | undefined>(undefined);
 
     const getFormatDate = (date: Date) =>
     {
