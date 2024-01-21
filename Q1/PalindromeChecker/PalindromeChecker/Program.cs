@@ -37,7 +37,7 @@ public class PalindromeChecker
 
 		int backwardIndex = sanitizedInput.Length - 1;
 
-		for (int forwardIndex = 0; forwardIndex < sanitizedInput.Length; forwardIndex++)
+		for (int forwardIndex = 0; forwardIndex < backwardIndex; forwardIndex++)
 		{
 			if (sanitizedInput[forwardIndex] != sanitizedInput[backwardIndex])
 			{
