@@ -26,3 +26,13 @@ body {
     flex: 1;
     padding: 20px;
 }
+
+.age {
+    padding: 2rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 0.25rem;
+}
