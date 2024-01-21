@@ -7,9 +7,9 @@ function App() {
 
     const getFormatDate = (date: Date) =>
     {
-        let day = String(date.getDate()).padStart(2, '0');
-        let month = String(date.getMonth() + 1).padStart(2, '0');
-        let year = date.getFullYear();
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
 
         return `${day}/${month}/${year}`;
     }
