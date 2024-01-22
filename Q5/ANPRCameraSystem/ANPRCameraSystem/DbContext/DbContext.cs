@@ -1,12 +1,26 @@
-﻿
-using ANPRCameraSystem.Entities;
+﻿using ANPRCameraSystem.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace ANPRCameraSystem.DbContext
 {
 	public class DbContext : Microsoft.EntityFrameworkCore.DbContext
 	{
-		public DbContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
+
+		private static DbContext instance;
+		public static DbContext Instance
+		{
+			get
+			{
+				if (instance == null)
+				{
+					instance = new DbContext();
+				}
+
+				return instance;
+			}
+		}
+
+		public DbContext()
 		{
 			Database.EnsureCreated();
 		}
@@ -16,5 +30,14 @@ namespace ANPRCameraSystem.DbContext
 			base.OnModelCreating(modelBuilder);
 			modelBuilder.Entity<VehiclePlate>().HasKey(x => x.Id);
 		}
+
+		protected override void OnConfiguring(DbContextOptionsBuilder options)
+		{
+			if (!options.IsConfigured)
+			{
+				options.UseSqlServer($"Data Source=ANPRDb");
+			}
+		}
+
 	}
 }
