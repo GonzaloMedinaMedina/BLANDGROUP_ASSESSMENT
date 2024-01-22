@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Security.Policy;
 
 namespace ANPRCameraSystem.Entities
 {
-	public class VehiclePlate : Entity
+	public class VehiclePlate
 	{
 		public string CountryOfVehicle { get; set; }
 		public string RegNumber { get; set; }
@@ -13,7 +12,7 @@ namespace ANPRCameraSystem.Entities
 		public string Time {  get; set; }
 		public string ImageFilename { get; set; }
 
-		public VehiclePlate(string countryOfVehicle, string regNumber, string confidenceLevel, string cameraName, DateTime date, string time, string imageFilename) : base(-1)
+		public VehiclePlate(string countryOfVehicle, string regNumber, string confidenceLevel, string cameraName, DateTime date, string time, string imageFilename)
 		{
 			CountryOfVehicle = countryOfVehicle;
 			RegNumber = regNumber;
@@ -24,6 +23,6 @@ namespace ANPRCameraSystem.Entities
 			ImageFilename = imageFilename;
 		}
 
-		public VehiclePlate() : base(-1) { }
+		public VehiclePlate() { }
 	}
 }

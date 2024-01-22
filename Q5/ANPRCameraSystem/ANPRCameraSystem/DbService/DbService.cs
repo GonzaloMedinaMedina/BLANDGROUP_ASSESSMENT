@@ -1,5 +1,7 @@
 ﻿using ANPRCameraSystem.Entities;
+using Microsoft.EntityFrameworkCore.Internal;
 using System;
+using System.Linq;
 
 namespace ANPRCameraSystem.DbService
 {
@@ -11,9 +13,12 @@ namespace ANPRCameraSystem.DbService
 
 			try
 			{
-				_dbContext.Add<VehiclePlate>(entity);
-				_dbContext.SaveChanges();
-				return true;
+				if (!_dbContext.Set<VehiclePlate>().Any(x => x.RegNumber == entity.RegNumber))
+				{
+					_dbContext.Add<VehiclePlate>(entity);
+					_dbContext.SaveChanges();
+					return true;
+				}
 			}
 			catch (Exception ex)
 			{

@@ -5,7 +5,6 @@ namespace ANPRCameraSystem.DbContext
 {
 	public class DbContext : Microsoft.EntityFrameworkCore.DbContext
 	{
-
 		private static DbContext instance;
 		public static DbContext Instance
 		{
@@ -28,7 +27,7 @@ namespace ANPRCameraSystem.DbContext
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);
-			modelBuilder.Entity<VehiclePlate>().HasKey(x => x.Id);
+			modelBuilder.Entity<VehiclePlate>().HasKey(x => x.RegNumber);
 		}
 
 		protected override void OnConfiguring(DbContextOptionsBuilder options)
