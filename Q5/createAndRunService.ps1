@@ -5,7 +5,7 @@ Stop-Service -Name "Service1" -Force
 sc.exe delete "Service1"
 
 # Create and configure the new service
-New-Service -Name "Service1" -BinaryPathName "C:\Users\Gonzalo\dev\BLANDGROUP_ASSESSMENT\Q5\ANPRCameraSystem\ANPRCameraSystem\bin\Release\ANPRCameraSystem.exe"
+New-Service -Name "Service1" -BinaryPathName <FullBinaryPath>
 
 # Start the new service
 Start-Service -Name "Service1"
