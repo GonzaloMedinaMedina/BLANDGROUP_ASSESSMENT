@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Policy;
 
 namespace ANPRCameraSystem.Entities
 {
@@ -9,10 +10,10 @@ namespace ANPRCameraSystem.Entities
 		public string ConfidenceLevel { get; set; }
 		public string CameraName { get; set; }
 		public DateTime Date {  get; set; }
-		public int Time {  get; set; }
+		public string Time {  get; set; }
 		public string ImageFilename { get; set; }
 
-		public VehiclePlate(string countryOfVehicle, string regNumber, string confidenceLevel, string cameraName, DateTime date, int time, string imageFilename) : base(-1)
+		public VehiclePlate(string countryOfVehicle, string regNumber, string confidenceLevel, string cameraName, DateTime date, string time, string imageFilename) : base(-1)
 		{
 			CountryOfVehicle = countryOfVehicle;
 			RegNumber = regNumber;
