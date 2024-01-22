@@ -14,7 +14,6 @@ namespace ANPRCameraSystem
 		/// </summary>
 		static void Main()
 		{
-			Console.Write("holaaa");
 			ServiceBase[] ServicesToRun;
 			ServicesToRun = new ServiceBase[]
 			{
